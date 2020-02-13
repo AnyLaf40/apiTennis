@@ -1,1 +1,9 @@
-Calculer le nb vitoire : SELECT nom, prenom, COUNT(id) AS nb_victoire FROM joueurs, resultat WHERE joueurs.id = resultat.idVainqueur
+Calculer le nb vitoire : 
+	SELECT nom, prenom, COUNT(id) AS nb_victoire FROM joueurs, resultat WHERE joueurs.id = resultat.idVainqueur;
+
+Afficher les deux joueurs qui se rencontrent :
+	SELECT Joueur1.Nom, Joueur2.Nom
+	FROM rencontres INNER JOIN joueurs AS Joueur1 ON rencontres.idJoueur1 = Joueur1.id
+	INNER JOIN joueurs AS Joueur2 ON rencontres.idJoueur2 = Joueur2.id;
+
+  
