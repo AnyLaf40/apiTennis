@@ -1,8 +1,15 @@
 swagger: '2.0'
 info:
-  description: >-
-    Cette API permet d'obtenir des informations sur différents joueurs de
-    tennis.
+  description: >- 
+    **API Tennis** est une API qui permet d'obtenir des informations relatives au monde du tennis professionnel :
+
+    * Joueurs
+
+    * Matchs
+
+    * Résultats des matchs
+
+    * Statistiques des joueurs   
   version: 1.0.0
   title: API Tennis
   termsOfService: 'http://swagger.io/terms/'
