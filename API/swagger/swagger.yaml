@@ -1,0 +1,114 @@
+swagger: '2.0'
+info:
+  description: >-
+    Cette API permet d'obtenir des informations sur différents joueurs de
+    tennis.
+  version: 1.0.0
+  title: API Tennis
+  termsOfService: 'http://swagger.io/terms/'
+  license:
+    name: Apache 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+host: localhost
+basePath: :3000
+apis: ["D:\Github\apiTennis\API\apiTennis.js"]
+tags:
+  - name: Joueur
+    description: à propos des joueurs
+    externalDocs:
+      description: Find out more
+      url: 'http://swagger.io'
+schemes:
+  - http
+definitions:
+  Joueur:
+    type: object
+    required:
+      - id
+      - nom
+      - prenom
+      - age
+      - taille
+      - classement
+    properties:
+      nom:
+        type: string
+      prenom:
+        type: string
+      age:
+        type: integer
+        format: int
+      taille:
+        type: string
+      classement:
+        type: integer
+        format: int
+paths:
+  /joueurs:
+    get:
+      tags:
+        - "Joueur"
+      summary: Voir la liste de tous les joueurs
+      description: ''
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Joueur'
+  /joueur:
+    post:
+      tags:
+        - "Joueur"
+      summary: Ajouter un nouveau joueur
+      description: ''
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: >-
+            Un objet joueur avec un nom, un prénom, un âge, une taille et un
+            classement ATP
+          required: true
+          schema:
+            $ref: '#/definitions/Joueur'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Joueur'
+        '400':
+          description: Invalid input
+
+  /joueur?nom={nom}&prenom={prenom}:
+    get: 
+      tags:
+      - "Joueur"
+      summary: "Rechercher un joueur"
+      description: ""
+      parameters:
+        - in: path
+          name: nom
+          type: "string"
+          required: true
+          description: Nom du joueur
+        - in: path
+          name: prenom
+          type: "string"
+          required: true
+          description: Prenom du joueur
+      produces:
+      - "application/json"
+      responses:
+        404:
+          description: "Not Found"
+        200:
+          description: "OK"
+          schema:
+            $ref: "#/definitions/Joueur"

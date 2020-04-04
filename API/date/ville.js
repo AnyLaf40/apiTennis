@@ -1,0 +1,3 @@
+exports.getInforVille = function(){
+    
+}
