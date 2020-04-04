@@ -9,17 +9,24 @@ info:
   license:
     name: Apache 2.0
     url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
-host: localhost
-basePath: :3000
-apis: ["D:\Github\apiTennis\API\apiTennis.js"]
+host: "localhost:3000"
+basePath: "/api"
+apis: ["apiTennis.js"]
 tags:
-  - name: Joueur
-    description: à propos des joueurs
-    externalDocs:
-      description: Find out more
-      url: 'http://swagger.io'
+- name: "Joueur"
+  description: "à propos d'un joueur"
+- name: "Match"
+  description: "à propos d'un match"
+- name: "Résultats"
+  description: "à propos des résultats d'un match"
+- name: "Statistiques"
+  description: "à propos des statistiques d'un joueur"
 schemes:
-  - http
+- "http"
+securityDefinitions:
+  basicAuth:
+    type: basic
+  
 definitions:
   Joueur:
     type: object
@@ -43,12 +50,19 @@ definitions:
       classement:
         type: integer
         format: int
+
+  Match:    
+
+  Resultat:
+
+  Statistiques:
+
 paths:
   /joueurs:
     get:
       tags:
         - "Joueur"
-      summary: Voir la liste de tous les joueurs
+      summary: "Voir la liste de tous les joueurs"
       description: ''
       produces:
         - application/json
@@ -59,56 +73,100 @@ paths:
             type: array
             items:
               $ref: '#/definitions/Joueur'
-  /joueur:
-    post:
-      tags:
-        - "Joueur"
-      summary: Ajouter un nouveau joueur
-      description: ''
-      consumes:
-        - application/json
-      produces:
-        - application/json
-      parameters:
-        - in: body
-          name: body
-          description: >-
-            Un objet joueur avec un nom, un prénom, un âge, une taille et un
-            classement ATP
-          required: true
-          schema:
-            $ref: '#/definitions/Joueur'
-      responses:
-        '200':
-          description: OK
-          schema:
-            $ref: '#/definitions/Joueur'
-        '400':
-          description: Invalid input
-
+    
   /joueur?nom={nom}&prenom={prenom}:
     get: 
       tags:
       - "Joueur"
       summary: "Rechercher un joueur"
-      description: ""
+      description: "Veuillez renseigner les champs \"nom\" et \"prenom\"."
       parameters:
-        - in: path
+        - in: query
           name: nom
           type: "string"
-          required: true
+          required: false
           description: Nom du joueur
-        - in: path
+        - in: query
           name: prenom
           type: "string"
-          required: true
-          description: Prenom du joueur
+          required: false
+          description: Prénom du joueur
       produces:
       - "application/json"
       responses:
-        404:
+        '404':
           description: "Not Found"
-        200:
+        '200':
           description: "OK"
           schema:
             $ref: "#/definitions/Joueur"
+  
+  /matchs/prochains:
+    get: 
+      tags:
+      - "Match"
+      summary: "Voir les prochains matchs"
+      description: ""
+      produces:
+      - "application/json"
+      responses:
+        '404':
+          description: "Not Found"
+        '200':
+          description: "OK"
+          schema:
+            $ref: ""
+  
+  /resultats:
+    get: 
+      tags:
+      - "Résultats"
+      summary: "Voir les résultats d'un match"
+      description: "Veuillez renseigner les champs \"nomJoueur1\" et \"nomJoueur2\"."
+      parameters:
+        - in: query
+          name: nomJoueur1
+          type: "string"
+          required: false
+          description: Nom du joueur 1
+        - in: query
+          name: nomJoueur2
+          type: "string"
+          required: false
+          description: Nom du joueur 2
+      produces:
+      - "application/json"
+      responses:
+        '404':
+          description: "Not Found"
+        '200':
+          description: "OK"
+          schema:
+            $ref: ""
+  
+  /statistiques:
+    get: 
+      tags:
+      - "Statistiques"
+      summary: "Consulter les statistiques d'un joueur"
+      description: "Veuillez renseigner les champs \"nomJoueur\" et \"nbMatchs\"."
+      parameters:
+        - in: query
+          name: nomJoueur
+          type: "string"
+          required: false
+          description: Nom du joueur
+        - in: query
+          name: nbMatchs
+          type: "string"
+          required: false
+          description: Nombre de matchs
+      produces:
+      - "application/json"
+      responses:
+        '404':
+          description: "Not Found"
+        '200':
+          description: "OK"
+          schema:
+            $ref: ""
