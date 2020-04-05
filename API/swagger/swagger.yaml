@@ -17,8 +17,8 @@ info:
     name: Apache 2.0
     url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
 host: "localhost:3000"
-basePath: "/api"
-apis: ["apiTennis.js"]
+basePath: ""
+apis: ["D:/GitHub/apiTennis/API/apiTennis.js"]
 tags:
 - name: "Joueur"
   description: "à propos d'un joueur"
@@ -185,11 +185,11 @@ paths:
       summary: "Voir les prochains matchs"
       description: "Veuillez renseignez le champs \"nbMatchs\""
       parameters:
-        - in: "query"
+        - in: "path"
           name: "nbMatchs"
           type: "integer"
           format: "int"
-          required: false
+          required: true
           description: "Nombre de matchs"
       produces:
       - "application/json"
@@ -208,16 +208,16 @@ paths:
       summary: "Voir les résultats d'un match"
       description: "Veuillez renseigner les champs \"nomDuJoueur\" et \"nbMatchs\"."
       parameters:
-        - in: "query"
+        - in: "path"
           name: "nomDuJoueur"
           type: "string"
-          required: false
+          required: true
           description: "Nom du joueur"
-        - in: "query"
+        - in: "path"
           name: "nbMatchs"
           type: "integer"
           format: "int"
-          required: false
+          required: true
           description: "Nombre de matchs"
       produces:
       - "application/json"
@@ -229,23 +229,23 @@ paths:
           schema:
             $ref: "#/definitions/Resultats"
   
-  /stats/{nomDuJoeur}/{nbMatchs}:
+  /stats/{nomDuJoueur}/{nbMatchs}:
     get: 
       tags:
       - "Statistiques"
       summary: "Consulter les statistiques d'un joueur"
       description: "Veuillez renseigner les champs \"nomDuJoueur\" et \"nbMatchs\"."
       parameters:
-        - in: "query"
+        - in: "path"
           name: "nomDuJoueur"
           type: "string"
-          required: false
+          required: true
           description: "Nom du joueur"
-        - in: "query"
+        - in: "path"
           name: "nbMatchs"
           type: "integer"
           format: "int"
-          required: false
+          required: true
           description: "Nombre de matchs"
       produces:
       - "application/json"
