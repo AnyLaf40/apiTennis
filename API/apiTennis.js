@@ -168,7 +168,7 @@ myRouter.route('/stats/:nomJoueur/:nbMatchs') //Les statistiques d'un joueur
                     if(nbVictoire == 0 ) statMatchs = 0;
                     else statMatchs = nbMatchs/nbVictoire * 100; //Calcul des stats du joueur
                     
-                    var tab = { "name" : nomJoueur, "statsVictoire:" : statMatchs + "%"}; //Tableau clé : valeur
+                    var tab = { "name" : nomJoueur, "statsVictoires:" : statMatchs + "%"}; //Tableau clé : valeur
                     res.send(JSON.stringify(tab));
                     }
                 });
