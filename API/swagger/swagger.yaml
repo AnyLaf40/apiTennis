@@ -5,7 +5,7 @@ info:
 
     * Joueurs
 
-    * Matchs
+    * Matchs disputés en France
 
     * Résultats des matchs
 
@@ -28,6 +28,8 @@ tags:
   description: "à propos des résultats d'un match"
 - name: "Statistiques"
   description: "à propos des statistiques d'un joueur"
+- name: "Météo"
+  description: "mise à jour des données météo"
 schemes:
 - "http"
 securityDefinitions:
@@ -256,3 +258,14 @@ paths:
           description: "OK"
           schema:
             $ref: "#definitions/Statistiques"
+  
+  /MAJMeteo:
+    get:
+      tags:
+      - "Météo"
+      summary: "Mettre à jour la météo"
+      responses:
+        404:
+          description: "Not Found"
+        200:
+          description: "OK"
