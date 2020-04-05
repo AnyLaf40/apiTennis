@@ -59,10 +59,80 @@ definitions:
         format: int
 
   Match:    
+    type: object
+    required:
+      - id
+      - J1
+      - J2
+      - date
+      - lieu
+      - court
+      - meteo
+    properties:
+      id:
+        type: integer
+        format: int
+      J1:
+        type: string
+      J2:
+        type: string
+      date:
+        type: string
+        format: date
+      lieu:
+        type: string
+      court:
+        type: string
+      meteo:
+        type: string
 
-  Resultat:
+  Resultats:
+    type: object
+    required:
+      - J1
+      - J2
+      - Vainqueur
+      - date
+      - lieu
+      - court
+      - set1
+      - set2
+      - set3
+      - set4
+      - set5
+    properties:
+      J1:
+        type: string
+      J2:
+        type: string
+      Vainqueur:
+        type: string
+      date:
+        type: integer
+        format: date
+      court:
+        type: string
+      set1:
+        type: string
+      set2:
+        type: string
+      set3:
+        type: string
+      set4:
+        type: string
+      set5:
+        type: string
 
   Statistiques:
+    type: object
+    required:
+      - name
+      - statsVictoires
+    properties:
+      name:
+        type: string
+      statsVictoires:
+        type: string
 
 paths:
   /joueurs:
@@ -88,92 +158,101 @@ paths:
       summary: "Rechercher un joueur"
       description: "Veuillez renseigner les champs \"nom\" et \"prenom\"."
       parameters:
-        - in: query
-          name: nom
+        - in: "query"
+          name: "nom"
           type: "string"
           required: false
-          description: Nom du joueur
-        - in: query
-          name: prenom
+          description: "Nom du joueur"
+        - in: "query"
+          name: "prenom"
           type: "string"
           required: false
-          description: Prénom du joueur
+          description: "Prénom du joueur"
       produces:
       - "application/json"
       responses:
-        '404':
+        404:
           description: "Not Found"
-        '200':
+        200:
           description: "OK"
           schema:
             $ref: "#/definitions/Joueur"
   
-  /matchs/prochains:
+  /prochainsMatchs/{nbMatchs}:
     get: 
       tags:
       - "Match"
       summary: "Voir les prochains matchs"
-      description: ""
+      description: "Veuillez renseignez le champs \"nbMatchs\""
+      parameters:
+        - in: "query"
+          name: "nbMatchs"
+          type: "integer"
+          format: "int"
+          required: false
+          description: "Nombre de matchs"
       produces:
       - "application/json"
       responses:
-        '404':
+        404:
           description: "Not Found"
-        '200':
+        200:
           description: "OK"
           schema:
-            $ref: ""
+            $ref: "#/definitions/Match"
   
-  /resultats:
+  /resultats/{nomDuJoueur}/{nbMatchs}:
     get: 
       tags:
       - "Résultats"
       summary: "Voir les résultats d'un match"
-      description: "Veuillez renseigner les champs \"nomJoueur1\" et \"nomJoueur2\"."
+      description: "Veuillez renseigner les champs \"nomDuJoueur\" et \"nbMatchs\"."
       parameters:
-        - in: query
-          name: nomJoueur1
+        - in: "query"
+          name: "nomDuJoueur"
           type: "string"
           required: false
-          description: Nom du joueur 1
-        - in: query
-          name: nomJoueur2
-          type: "string"
+          description: "Nom du joueur"
+        - in: "query"
+          name: "nbMatchs"
+          type: "integer"
+          format: "int"
           required: false
-          description: Nom du joueur 2
+          description: "Nombre de matchs"
       produces:
       - "application/json"
       responses:
-        '404':
+        404:
           description: "Not Found"
-        '200':
+        200:
           description: "OK"
           schema:
-            $ref: ""
+            $ref: "#/definitions/Resultats"
   
-  /statistiques:
+  /stats/{nomDuJoeur}/{nbMatchs}:
     get: 
       tags:
       - "Statistiques"
       summary: "Consulter les statistiques d'un joueur"
-      description: "Veuillez renseigner les champs \"nomJoueur\" et \"nbMatchs\"."
+      description: "Veuillez renseigner les champs \"nomDuJoueur\" et \"nbMatchs\"."
       parameters:
-        - in: query
-          name: nomJoueur
+        - in: "query"
+          name: "nomDuJoueur"
           type: "string"
           required: false
-          description: Nom du joueur
-        - in: query
-          name: nbMatchs
-          type: "string"
+          description: "Nom du joueur"
+        - in: "query"
+          name: "nbMatchs"
+          type: "integer"
+          format: "int"
           required: false
-          description: Nombre de matchs
+          description: "Nombre de matchs"
       produces:
       - "application/json"
       responses:
-        '404':
+        404:
           description: "Not Found"
-        '200':
+        200:
           description: "OK"
           schema:
-            $ref: ""
+            $ref: "#definitions/Statistiques"
