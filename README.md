@@ -27,12 +27,12 @@ Pour établir la connexion à la base MySQL, il faut que l'identifiant et le mot
 Pour cela, modifiez le code *"apiTennis/API/apiTennis.js"* ligne 20 à 23 : 
 
 var pool = mysql.createPool({  
-    `connectionLimit: 10,  
+    connectionLimit: 10,  
     host: "localhost",   
     user: "API_Tennis",    
     password: "api2020",     
     database: "API_Tennis"  
-    });`
+    });
 
 
 
