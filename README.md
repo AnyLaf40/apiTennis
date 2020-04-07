@@ -40,9 +40,20 @@ Pour cela, modifiez le code *"apiTennis/API/apiTennis.js"* ligne 20 à 23 :
 
 ### Lancer le serveur
 
-Il ne vous manque plus qu'à lancer le serveur via l'invite de commande de NodeJS (en vous placant dans le même dossier que le fichier *apiTennis.js* sur votre espace de travail) en utilisant : `node [nomDuFichier.js]`
+Il ne vous manque plus qu'à lancer le serveur via l'invite de commande de NodeJS (en vous placant dans le même dossier que le fichier *apiTennis.js* sur votre espace de travail) en utilisant : `node [nomDuFichier.js]`.
 
+Le serveur est accessible via l'adresse localhost:3000 (configuration par défaut).
 
+## Documentation SWAGGER
+
+Pour accéder à la documentation SWAGGER de notre API, veuillez utiliser le lien [localhost:3000/api/doc](localhost:3000/api/doc).
+
+## Besoin d'aide ?
+
+Vous pouvez nous contacter sur nos adresses mails : 
+
+* jbouteille@enseirb-matmeca.fr
+* alafaye001@enseirb-matmeca.fr
 
 
 
