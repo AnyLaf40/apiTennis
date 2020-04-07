@@ -26,13 +26,13 @@ Notre API est codé en __NodeJS__. Il faut donc installer ce dernier pour lancer
 Pour établir la connexion à la base MySQL, il faut que l'identifiant et le mot de passe du compte crée précédemment figures dans le code. 
 Pour cela, modifiez le code *"apiTennis/API/apiTennis.js"* ligne 20 à 23 : 
 
-var pool = mysql.createPool({  
+`var pool = mysql.createPool({  
     connectionLimit: 10,  
     host: "localhost",   
     user: "API_Tennis",    
     password: "api2020",     
     database: "API_Tennis"  
-    });
+    });`
 
 
 
