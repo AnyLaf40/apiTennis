@@ -46,7 +46,7 @@ Le serveur est accessible via l'adresse localhost:3000 (configuration par défau
 
 ## Documentation SWAGGER
 
-Pour accéder à la documentation SWAGGER de notre API, veuillez utiliser le lien [localhost:3000/api/doc](localhost:3000/api/doc).
+Pour accéder à la documentation SWAGGER de notre API, veuillez utiliser le lien [localhost:3000/api/doc](http://localhost:3000/api/doc).
 
 ## Besoin d'aide ?
 
