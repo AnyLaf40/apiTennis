@@ -23,16 +23,28 @@ Notre API est codé en __NodeJS__. Il faut donc installer ce dernier pour lancer
 
 ### Modifier le code js
 
-Pour établir la connexion à la base MySQL, il faut que l'identifiant et le mot de passe du compte crée précédemment figures dans le code. 
+Pour établir la connexion à la base __MySQL__, il faut que l'identifiant et le mot de passe du compte crée précédemment figures dans le code. 
 Pour cela, modifiez le code *"apiTennis/API/apiTennis.js"* ligne 20 à 23 : 
 
-`var pool = mysql.createPool({  
-    connectionLimit: 10,  
-    host: "localhost",   
-    user: "API_Tennis",    
-    password: "api2020",     
-    database: "API_Tennis"  
-    });`
+* Modifier la variable *user* corrrespond à l'identifiant de votre base MySQL : 
+
+    `user: "API_Tennis",`
+
+* Ensuite le mot de passe : 
+
+    `password: "api2020",`
+
+* Et enfin le nom de votre base __MySQL__ :
+
+    `database: "API_Tennis"`
+
+### Lancer le serveur
+
+Il ne vous manque plus qu'à lancer le serveur via l'invite de commande de NodeJS (en vous placant dans le même dossier que le fichier *apiTennis.js* sur votre espace de travail) en utilisant : `node [nomDuFichier.js]`
+
+
+
+
 
 
 
