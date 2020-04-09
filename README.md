@@ -15,7 +15,7 @@ Commencez par installer __WAMPSERVER.__
 ### PhpMyAdmin
 
 Ensuite, lorsque __WAMPSERVER__ est installé, accédez à [phpmyadmin](http://127.0.0.1/phpmyadmin/) et créez un compte sous __MySQL.__
-Après cela, connectez-vous avec votre compte et importez le fichier *"base.sql"* présent sous le dossier *"apiTennis/SQL"* du projet Github.__
+Après cela, connectez-vous avec votre compte et importez le fichier *"base.sql"* présent sous le dossier *"apiTennis/SQL"* du projet Github.
 
 ### Installer NodeJS
 
