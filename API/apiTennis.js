@@ -137,6 +137,7 @@ myRouter.route('/stats/:nomJoueur/:nbMatchs') //Les statistiques d'un joueur
 
         nomJoueur = req.params.nomJoueur;
         nbMatchs = req.params.nbMatchs;
+
         if(nomJoueur)
         {
             pool.getConnection(function(err, connection){
@@ -151,6 +152,7 @@ myRouter.route('/stats/:nomJoueur/:nbMatchs') //Les statistiques d'un joueur
                     if(result[0] == null) res.status(400).send("Erreur de la requete"); //Si le joueur n'a joué aucun match ou si inexistant
                     
                     else{
+
                     var i = 0;
                     nbVictoire = 0;
  
@@ -166,9 +168,10 @@ myRouter.route('/stats/:nomJoueur/:nbMatchs') //Les statistiques d'un joueur
                     nbMatchs = i; // Il se peut que le joueur n'est pas joué le nombre de match indiqué par le paramètre "nbMatchs"
 
                     if(nbVictoire == 0 ) statMatchs = 0;
-                    else statMatchs = nbMatchs/nbVictoire * 100; //Calcul des stats du joueur
+                    else statMatchs = nbVictoire/nbMatchs * 100; //Calcul des stats du joueur
                     
                     var tab = { "name" : nomJoueur, "statsVictoires:" : statMatchs + "%"}; //Tableau clé : valeur
+                    
                     res.send(JSON.stringify(tab));
                     }
                 });

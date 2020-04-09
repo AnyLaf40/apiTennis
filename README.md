@@ -1,1 +1,61 @@
 # apiTennis
+
+L'objectif principal de cette API est de recenser les matchs de tennis en France.
+
+Vous aurez donc accès, via des requêtes HTTP, à des données telles que les joueurs, les rencontres, les résultats, les stats,...
+
+Voici une procédure d'installation afin de manipuler l'API sur un serveur local.
+
+## Procédures d'installation
+
+### Wampserver
+
+Commencez par installer __WAMPSERVER.__
+
+### PhpMyAdmin
+
+Ensuite, lorsque __WAMPSERVER__ est installé, accédez à [phpmyadmin](http://127.0.0.1/phpmyadmin/) et créez un compte sous __MySQL.__
+Après cela, connectez-vous avec votre compte et importez le fichier *"base.sql"* présent sous le dossier *"apiTennis/SQL"* du projet Github.__
+
+### Installer NodeJS
+
+Notre API est codé en __NodeJS__. Il faut donc installer ce dernier pour lancer le serveur.
+
+### Modifier le code js
+
+Pour établir la connexion à la base __MySQL__, il faut que l'identifiant et le mot de passe du compte crée précédemment figures dans le code. 
+Pour cela, modifiez le code *"apiTennis/API/apiTennis.js"* ligne 20 à 23 : 
+
+* Modifier la variable *user* corrrespond à l'identifiant de votre base MySQL : 
+
+    `user: "API_Tennis",`
+
+* Ensuite le mot de passe : 
+
+    `password: "api2020",`
+
+* Et enfin le nom de votre base __MySQL__ :
+
+    `database: "API_Tennis"`
+
+### Lancer le serveur
+
+Il ne vous manque plus qu'à lancer le serveur via l'invite de commande de NodeJS (en vous placant dans le même dossier que le fichier *apiTennis.js* sur votre espace de travail) en utilisant : `node [nomDuFichier.js]`.
+
+Le serveur est accessible via l'adresse localhost:3000 (configuration par défaut).
+
+## Documentation SWAGGER
+
+Pour accéder à la documentation SWAGGER de notre API, veuillez utiliser le lien [localhost:3000/api/doc](http://localhost:3000/api/doc).
+
+## Besoin d'aide ?
+
+Vous pouvez nous contacter sur nos adresses mails : 
+
+* jbouteille@enseirb-matmeca.fr
+* alafaye001@enseirb-matmeca.fr
+
+
+
+
+
